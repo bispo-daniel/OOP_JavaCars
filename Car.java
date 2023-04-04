@@ -1,3 +1,5 @@
+package OOP_JavaCars;
+
 public class Car {
     String brand;
     String model;
