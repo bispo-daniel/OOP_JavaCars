@@ -1,5 +1,3 @@
-package OOP_JavaCars;
-
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -33,7 +31,7 @@ public class Main {
         }
     }
 
-    static int sedanIt = 0;
+    static int sedanIt = 1;
     static void createSedan() {
         String brand = JOptionPane.showInputDialog(null, "Type the car's brand");
         String model = JOptionPane.showInputDialog(null, "Type the car's model");
@@ -47,7 +45,7 @@ public class Main {
         menu();
     }
 
-    static int suvIt = 0;
+    static int suvIt = 1;
     static void createSUV() {
         String brand = JOptionPane.showInputDialog(null, "Type the car's brand");
         String model = JOptionPane.showInputDialog(null, "Type the car's model");
@@ -61,7 +59,7 @@ public class Main {
         menu();
     }
 
-    static int coupeIt = 0;
+    static int coupeIt = 1;
     static void createCoupe() {
         String brand = JOptionPane.showInputDialog(null, "Type the car's brand");
         String model = JOptionPane.showInputDialog(null, "Type the car's model");
@@ -75,7 +73,7 @@ public class Main {
         menu();
     }
 
-    static int roadsterIt = 0;
+    static int roadsterIt = 1;
     static void createRoadster() {
         String brand = JOptionPane.showInputDialog(null, "Type the car's brand");
         String model = JOptionPane.showInputDialog(null, "Type the car's model");
@@ -121,7 +119,7 @@ public class Main {
         completeSedansList = "";
 
         for(Sedan ss : sedans){
-            completeSedansList += ss.myPrinter.print();
+            completeSedansList += ss.print();
         }
 
         JOptionPane.showMessageDialog(null, completeSedansList);
@@ -133,7 +131,7 @@ public class Main {
         completeSUVsList = "";
 
         for(SUV ss : suvs){
-            completeSUVsList += ss.myPrinter.print();
+            completeSUVsList += ss.print();
         }
 
         JOptionPane.showMessageDialog(null, completeSUVsList);
@@ -145,7 +143,7 @@ public class Main {
         completeCoupesList = "";
 
         for(Coupe ss : coupes){
-            completeCoupesList += ss.myPrinter.print();
+            completeCoupesList += ss.print();
         }
 
         JOptionPane.showMessageDialog(null, completeCoupesList);
@@ -157,7 +155,7 @@ public class Main {
         completeRoadstersList = "";
 
         for(Roadster ss : roadsters){
-            completeRoadstersList += ss.myPrinter.print();
+            completeRoadstersList += ss.print();
         }
 
         JOptionPane.showMessageDialog(null, completeRoadstersList);
@@ -169,49 +167,20 @@ public class Main {
         completeCarsList = "";
 
         for(Sedan ss : sedans){
-            completeCarsList += ss.myPrinter.print();
+            completeCarsList += ss.print();
         }
         for(SUV ss : suvs){
-            completeCarsList += ss.myPrinter.print();
+            completeCarsList += ss.print();
         }
         for(Coupe ss : coupes){
-            completeCarsList += ss.myPrinter.print();
+            completeCarsList += ss.print();
         }
         for(Roadster ss : roadsters){
-            completeCarsList += ss.myPrinter.print();
+            completeCarsList += ss.print();
         }
 
         JOptionPane.showMessageDialog(null, completeCarsList);
         menu();
-    }
-
-    static void updateMenu() {
-        String opString = JOptionPane.showInputDialog(null, "Update Car:\n   1- Update Sedan\n   2- Update SUV\n   3- Update Coupe\n   4- Update Roadster");
-        int op = Integer.parseInt(opString);
-
-        switch(op){
-            case 1:
-                updateSedan();
-                break;
-            case 2:
-                updateSUV();
-                break;
-            case 3:
-                updateCoupe();
-                break;
-            case 4:
-                updateRoadster();
-                break;
-        }
-    }
-
-    private static void updateSedan() {
-    }
-    private static void updateSUV() {
-    }
-    private static void updateCoupe() {
-    }
-    private static void updateRoadster() {
     }
 
     static void deleteMenu() {
@@ -236,7 +205,7 @@ public class Main {
                 break;
         }
     }
-    
+
     private static void deleteSedan() {
         String idStr = JOptionPane.showInputDialog(null, "Type the car's id");
         int id = Integer.parseInt(idStr);
@@ -252,19 +221,70 @@ public class Main {
     }
 
     private static void deleteSUV() {
+        String idStr = JOptionPane.showInputDialog(null, "Type the car's id");
+        int id = Integer.parseInt(idStr);
+
+        for(SUV ss : suvs){
+            if(ss.id == id){
+                suvs.remove(ss);
+                break;
+            }
+        }
+
+        menu();
     }
 
     private static void deleteCoupe() {
+        String idStr = JOptionPane.showInputDialog(null, "Type the car's id");
+        int id = Integer.parseInt(idStr);
+
+        for(Coupe ss : coupes){
+            if(ss.id == id){
+                coupes.remove(ss);
+                break;
+            }
+        }
+
+        menu();
     }
 
     private static void deleteRoadster() {
+        String idStr = JOptionPane.showInputDialog(null, "Type the car's id");
+        int id = Integer.parseInt(idStr);
+
+        for(Roadster ss : roadsters){
+            if(ss.id == id){
+                roadsters.remove(ss);
+                break;
+            }
+        }
+
+        menu();
     }
 
     private static void deleteAllCars() {
+        String confirmationStr = JOptionPane.showInputDialog(null, "Do you to delete all cars?\n 0) No\n 1) Yes");
+        int confirmation = Integer.parseInt(confirmationStr);
+
+        if(confirmation == 0){
+            menu();
+        } else if (confirmation == 1){
+
+            sedans.clear();
+            suvs.clear();
+            coupes.clear();
+            roadsters.clear();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Type a valid option...");
+            menu();
+        }
+
+        menu();
     }
 
     static void menu(){
-        String options = "1) Create car\n 2) List car\n 3) Update car\n 4) Delete car\n 0) Exit";
+        String options = "1) Create car\n 2) List car\n 3) Delete car\n 0) Exit";
         String opStr = JOptionPane.showInputDialog(null, options);
         int op = Integer.parseInt(opStr);
 
@@ -279,9 +299,6 @@ public class Main {
                 listMenu();
                 break;
             case 3:
-                updateMenu();
-                break;
-            case 4:
                 deleteMenu();
                 break;
             default:
@@ -289,7 +306,6 @@ public class Main {
                 menu();
         }
     }
-
 
     public static void main(String[] arr) {
         try{

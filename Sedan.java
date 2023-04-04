@@ -1,7 +1,5 @@
-package OOP_JavaCars;
-
 public class Sedan extends Car {
-    int id = 0;
+    int id;
     String bodyStyle = "Sedan";
     int doorNumber = 4;
     int seatsNumber = 5;
@@ -13,5 +11,8 @@ public class Sedan extends Car {
     }
 
     //Class with method to print this class attributes
-    Print myPrinter = new Print(id, brand, model, year, bodyStyle, engine, doorNumber, seatsNumber);
+    public String print(){
+        return 
+            "\nId: " + id + " Brand: " + brand + " Model: " + model + " Year: " + year +  " Body Style: " + bodyStyle + " Engine: " + engine + " Door Number: " + doorNumber + " Seats Number: " + seatsNumber;
+    }
 }

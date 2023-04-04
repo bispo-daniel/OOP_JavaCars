@@ -1,5 +1,3 @@
-package OOP_JavaCars;
-
 public class Print {
     int id;
     String brand;
