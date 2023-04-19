@@ -163,7 +163,7 @@ public class Main {
     }
 
     static String completeCarsList;
-    static void listAllCars(){
+    static void listAllCars() {
         completeCarsList = "";
 
         for(Sedan ss : sedans){
