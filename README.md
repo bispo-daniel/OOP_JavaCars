@@ -3,4 +3,8 @@ Project developed to learn Java Class Inheritance.
 
 Parent and children class.
 
-Print class was a challenge
+The parent class is "Car"
+
+Children are "Sedan", "SUV", "Coupe" and "Roadster".
+
+In the Main class, the user can create, list, update and delete, being able to choose between all categories or a specific category in some functions.
